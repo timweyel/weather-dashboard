@@ -22,12 +22,12 @@
     <div class="row">
       
       <!-- search section -->
-      <div class="col-3 search">
+      <div class="col-3 search-col">
         <h4>Search</h4>
         <!-- search for city form-->
         <form class="form-inline">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" id="city-input" placeholder="Name of City">
+            <input type="text" class="form-control" id="city-search-input" placeholder="Name of City">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
             </div>
@@ -35,38 +35,60 @@
         </form>
 
         <!-- search history -->
-        <div >
+        <div id="search-history">
           search history
+          <!-- TODO: if there are records in localStorage, then create a button for each key/value pair -->
         </div>
       </div>
 
       <!-- weather details section -->
       <div class="col-9">
-        <div class="card" id="currentWeather">
-
+        <div class="row" id="currentWeather">
+          <h2 id="searchCity">searched city goes here</h2>
+          <p>date goes here</p>
+          <p>weather icon goes here</p>
           currentWeather
-          <div class="row">
-            <div id="forecastWeather" class="col-9">
-              forecastWeather
-              <div id="forecastCardsContainer">
-                forecastCardsContainer
-                <div class="forecastCards">
-                  forecastCards
-                  <div id="forecastCard1" class="card-body">
-                    forecastCard1
-                  </div>
-                  <div id="forecastCard2" class="card-body">
-                    forecastCard2
-                  </div>
-                  <div id="forecastCard3" class="card-body">
-                    forecastCard3
-                  </div>
-                  <div id="forecastCard4" class="card-body">
-                    forecastCard4
-                  </div>
-                  <div id="forecastCard5" class="card-body">
-                    forecastCard5
-                  </div>
+        </div>
+        <div class="row">
+          <div id="fiveDayForecastContainer" class="col-9">
+            forecastWeather
+            <div id="fiveDayForecastCardsContainer">
+              forecastCardsContainer
+              <div class="row" id="fiveDayForecastCards">
+                <div id="forecastCard1" class="card-body">
+                  <p>forecastCard1</p>
+                  <p>date</p>
+                  <p>forecastIcon</p>
+                  <p>temperature</p>
+                  <p>humidity</p>
+                </div>
+                <div id="forecastCard2" class="card-body">
+                  <p>forecastCard2</p>
+                  <p>date</p>
+                  <p>forecastIcon</p>
+                  <p>temperature</p>
+                  <p>humidity</p>
+                </div>
+                <div id="forecastCard3" class="card-body">
+                  <p>forecastCard3</p>
+                  <p>date</p>
+                  <p>forecastIcon</p>
+                  <p>temperature</p>
+                  <p>humidity</p>
+                </div>
+                <div id="forecastCard4" class="card-body">
+                  <p>forecastCard4</p>
+                  <p>date</p>
+                  <p>forecastIcon</p>
+                  <p>temperature</p>
+                  <p>humidity</p>
+                </div>
+                <div id="forecastCard5" class="card-body">
+                  <p>forecastCard5</p>
+                  <p>date</p>
+                  <p>forecastIcon</p>
+                  <p>temperature</p>
+                  <p>humidity</p>
                 </div>
               </div>
             </div>
@@ -76,10 +98,9 @@
       </div>
 
     </div>
+
   </div>
-  <footer>
-    footer
-  </footer>
+
   
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -87,4 +108,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
+<footer class="row">
+  footer
+</footer>
 </html>
