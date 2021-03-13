@@ -9,16 +9,24 @@ let fiveDayForecastCardsContainerEl = document.querySelector("#fiveDayForecastCa
 
 let api_key = '437055076a04e82223227a4c0e154c80';
 let city = 'san francisco';
-let queryUrl = `http://api.openweathermap.org/data/2.5/weather?q=` + city + `&appid=437055076a04e82223227a4c0e154c80`;
+let queryUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
 
-
+let cityWeatherSearch = function(event) {
+  //event.preventDefault();
+  let city = event.target.getAttribute("city-search-input");
+  if (city) {
+    getCityWeather(city);
+    citySearchHistory.unshift({city});
+    cityInputEl.value = "";
+  }
+}
 
 //fetch current weather for searched city
 let getCityWeather = function(city) {
   
   fetch(queryUrl)
   .then(function(response) {
-    return response.json()
+    response.json()
     .then(function(data) {
       console.log(data)
       //displayCurrentWeather(data, city);
