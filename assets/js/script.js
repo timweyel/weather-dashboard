@@ -1,41 +1,49 @@
 let citySearchHistory = [];
 
-let searchCityFormEl = document.querySelector("#citySearch");
+let searchCityFormEl = document.querySelector("#citySearchForm");
 let searchColEl = document.querySelector("#search-col");
+
+let searchButton = document.querySelector("#search-button");
 let cityInputEl = document.querySelector("#city-search-input");
 let searchHistoryEl = document.querySelector("#search-history");
-let currentWeatherEl = document.querySelector("#currentWeather");
+
 let fiveDayForecastContainerEl = document.querySelector("#fiveDayForecastContainer");
 let fiveDayForecastCardsContainerEl = document.querySelector("#fiveDayForecastCardsContainer");
 
+
 let api_key = '437055076a04e82223227a4c0e154c80';
 
-let cityWeatherSearch = function(event) {
-  // get value from input element
-  event.preventDefault();
-  
-  city = cityInputEl.value.trim();
-  if (city) {
-    getCityWeather(city);
-    // clear old content
-    cityInputEl.value = "";
-  }
-}
-
-$( "#search-button" ).click(function() {
-  $( "#city-search-input" ).text( city );
-});
-
 //fetch current weather for searched city
-let getCityWeather = function(city) {
+let getCityWeather = function() {
+  event.preventDefault();
+  const city = document.querySelector("#city-search-input").value;
+  //console.log('city before fetch', city);
+  
   let queryUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;  
+  
   fetch(queryUrl)
   .then(function(response) {
-    response.json()
+    return response.json()
     .then(function(data) {
       console.log(data)
-      $("#searchCity").text(city);
+
+      //console.log('city after fetch', city);
+      let searchCity = document.querySelector("#searchCity");
+      searchCity.append(city);
+
+      let todaysDateEl = document.querySelector("#todaysDate");
+      todaysDateEl.textContent=moment(data.dt.value).format("MMM D, YYYY");
+      currentWeatherContainerEl.append(todaysDateEl);
+
+      var weatherIcon = document.createElement("img")
+      weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
+      currentWeatherContainerEl.append(weatherIcon);
+
+
+
     });
   });
+
 };
+
 

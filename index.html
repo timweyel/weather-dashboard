@@ -23,13 +23,14 @@
       
       <!-- search section -->
       <div class="col-3 search-col">
-        <h4>Search</h4>
+        <h4>Search for a City:</h4>
         <!-- search for city form-->
-        <form id="citySearch" class="form-inline">
+        <form id="citySearchForm" class="form-inline">
           <div class="input-group mb-3">
             <input type="text" class="form-control" id="city-search-input" placeholder="Name of City">
             <div class="input-group-append">
-              <button id="search-button" class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+              <!-- <button id="search-button" class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button> -->
+              <button id="search-button" class="btn btn-outline-secondary" type="submit" onclick="getCityWeather()"><i class="fas fa-search"></i></button>
             </div>
           </div>
         </form>
@@ -43,15 +44,17 @@
 
       <!-- weather details section -->
       <div class="col-9">
-        <div class="row" id="currentWeather">
-          <h2 id="searchCity">searched city goes here</h2>
-          <p>date goes here</p>
-          <p>weather icon goes here</p>
-          currentWeather
+        <div class="row city-and-date" id="currentWeather">
+          <span>
+            <h2 id="searchCity"></h2><h2 id="todaysDate"></h2>
+          </span>
+          <!-- <img src="https://openweathermap.org/img/wn/04n@2x.png"> -->
+          <div id="current-weather-container">
+          </div>
         </div>
         <div class="row">
           <div id="fiveDayForecastContainer" class="col-9">
-            forecastWeather
+            forecastWeather div
             <div id="fiveDayForecastCardsContainer">
               forecastCardsContainer
               <div class="row" id="fiveDayForecastCards">
