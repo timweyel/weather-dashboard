@@ -109,8 +109,14 @@ const displayFiveDayForecast = function(weather) {
 
   let fiveDayForecastIcon = document.createElement("img");
   fiveDayForecastIcon.setAttribute("src", `https://openweathermap.org/img/wn/${daily.weather[0].icon}@2x.png`);  
-  fiveDayForecastIcon.classList = "card-body";
+  fiveDayForecastIcon.classList = "card-body text-center";
   fiveDayForecastCards.appendChild(fiveDayForecastIcon);
+
+  let fiveDayForecastTemp = document.createElement("span");
+  fiveDayForecastTemp.classList = "card-body text-center";
+  fiveDayForecastTemp.textContent = daily.main.temp + " °F";
+  fiveDayForecastCards.appendChild(fiveDayForecastTemp);
+
 
 }
 };
