@@ -1,6 +1,6 @@
 // $(document).ready(function(event) {
 
-let citySearchHistory = [];
+const citySearchHistory = [];
 
 let searchInputEl = document.querySelector("#city-search-input");
 
@@ -16,15 +16,15 @@ let fiveDayForecastContainerEl = document.querySelector("#fiveDayForecastContain
 let fiveDayForecastCardsContainerEl = document.querySelector("#fiveDayForecastCardsContainer");
 
 
-let api_key = '437055076a04e82223227a4c0e154c80';
+const api_key = '437055076a04e82223227a4c0e154c80';
 
 //fetch current weather for searched city
-let getCityWeather = function() {
+const getCityWeather = function() {
   event.preventDefault();
   const city = document.querySelector("#city-search-input").value;
   //console.log('city before fetch', city);
   
-  let queryUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${api_key}`;  
+  const queryUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${api_key}`;  
   
   fetch(queryUrl)
   .then(function(response) {
@@ -32,14 +32,12 @@ let getCityWeather = function() {
     .then(function(data) {
       console.log(data);
       displayWeather(data, city);
-      
     });
-
   });
   //console.log(city);
 };
 
-let displayWeather = function(weather, city) {
+const displayWeather = function(weather, city) {
 // console.log(city);
   currentWeatherContainerEl.textContent = '';
   currentWeatherContainerEl.append(city);
@@ -79,17 +77,19 @@ let displayWeather = function(weather, city) {
 
 // });
 
-let getFiveDayForecast = function(city){
-  let queryUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${api_key}`;
+const getFiveDayForecast = function(city){
+  const queryUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${api_key}`;
 
   fetch(queryUrl)
   .then(function(response){
       response.json().
       then(function(data){
         console.log(data)
-
+      displayFiveDayForecast(data, city);
       });
   });
 };
 
-
+const displayFiveDayForecast = function(weather, city) {
+  
+};
