@@ -117,6 +117,9 @@ const displayFiveDayForecast = function(weather) {
   fiveDayForecastTemp.textContent = daily.main.temp + " °F";
   fiveDayForecastCards.appendChild(fiveDayForecastTemp);
 
-
+  let fiveDayForecastHumidity=document.createElement("span");
+  fiveDayForecastHumidity.classList = "card-body text-center";
+  fiveDayForecastHumidity.textContent = daily.main.humidity + "  %";
+  fiveDayForecastCards.appendChild(fiveDayForecastHumidity);
 }
 };
