@@ -28,7 +28,7 @@ let getCityWeather = function() {
   
   fetch(queryUrl)
   .then(function(response) {
-    return response.json()
+    response.json()
     .then(function(data) {
       console.log(data);
       displayWeather(data, city);
@@ -74,6 +74,22 @@ let displayWeather = function(weather, city) {
   currentWeatherContainerEl.appendChild(windSpeedEl);
   windSpeedEl.classList = "list-group-item";
     
+  getFiveDayForecast(city);
 }
 
 // });
+
+let getFiveDayForecast = function(city){
+  let queryUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${api_key}`;
+
+  fetch(queryUrl)
+  .then(function(response){
+      response.json().
+      then(function(data){
+        console.log(data)
+
+      });
+  });
+};
+
+
