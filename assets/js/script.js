@@ -100,12 +100,17 @@ const displayFiveDayForecast = function(weather) {
 
   let fiveDayForecastCards = document.createElement("div");
   fiveDayForecastCards.classList = "card";
+  fiveDayForecastContainerEl.appendChild(fiveDayForecastCards);
 
-  var fiveDayForecastDate = document.createElement("h4");
+  let fiveDayForecastDate = document.createElement("h4");
   fiveDayForecastDate.textContent = moment.unix(daily.dt).format("MMM D, YYYY");
   fiveDayForecastDate.classList = "card-header";
-  fiveDayForecastContainerEl.appendChild(fiveDayForecastDate);
+  fiveDayForecastCards.appendChild(fiveDayForecastDate);
 
+  let fiveDayForecastIcon = document.createElement("img");
+  fiveDayForecastIcon.setAttribute("src", `https://openweathermap.org/img/wn/${daily.weather[0].icon}@2x.png`);  
+  fiveDayForecastIcon.classList = "card-body";
+  fiveDayForecastCards.appendChild(fiveDayForecastIcon);
 
-  }
+}
 };
