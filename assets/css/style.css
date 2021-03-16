@@ -14,5 +14,5 @@ header {
 }
 
 .card-body {
-  flex: auto;
+  /* flex: auto; */
 }

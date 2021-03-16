@@ -109,7 +109,8 @@ const displayFiveDayForecast = function(weather) {
 
   let fiveDayForecastIcon = document.createElement("img");
   fiveDayForecastIcon.setAttribute("src", `https://openweathermap.org/img/wn/${daily.weather[0].icon}@2x.png`);  
-  fiveDayForecastIcon.classList = "card-body text-center";
+  fiveDayForecastIcon.classList = "card-body text-center mx-auto";
+  fiveDayForecastIcon.setAttribute("width", '100px');  
   fiveDayForecastCards.appendChild(fiveDayForecastIcon);
 
   let fiveDayForecastTemp = document.createElement("span");
