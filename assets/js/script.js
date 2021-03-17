@@ -122,29 +122,29 @@ const displayFiveDayForecast = function(weather) {
       fiveDayForecastCardGroup.appendChild(fiveDayForecastCards);      
       
       let fiveDayForecastDate = document.createElement("h4");
-      fiveDayForecastDate.classList = "card-header text-center";
+      fiveDayForecastDate.classList = "card-header";
       fiveDayForecastDate.textContent = moment.unix(daily.dt).format("MMM D, YYYY");
 
       fiveDayForecastCards.appendChild(fiveDayForecastDate);
 
       let fiveDayForecastIcon = document.createElement("img");
       fiveDayForecastIcon.setAttribute("src", `https://openweathermap.org/img/wn/${daily.weather[0].icon}@2x.png`);  
-      fiveDayForecastIcon.classList = "card-body text-center ";
+      fiveDayForecastIcon.classList = "card-body";
       fiveDayForecastIcon.setAttribute("width", '100px');  
       fiveDayForecastCards.appendChild(fiveDayForecastIcon);
     
       let fiveDayForecastTemp = document.createElement("span");
-      fiveDayForecastTemp.classList = "card-body text-center";
+      fiveDayForecastTemp.classList = "card-body";
       fiveDayForecastTemp.textContent = daily.main.temp + " °F";
       fiveDayForecastCards.appendChild(fiveDayForecastTemp);
     
       let fiveDayForecastHumidity=document.createElement("span");
-      fiveDayForecastHumidity.classList = "card-body text-center";
+      fiveDayForecastHumidity.classList = "card-body";
       fiveDayForecastHumidity.textContent = daily.main.humidity + "  %";
       fiveDayForecastCards.appendChild(fiveDayForecastHumidity);
 
       let fiveDayForecastUvIndex = document.createElement("span");
-      fiveDayForecastUvIndex.classList = "card-body text-center";
+      fiveDayForecastUvIndex.classList = "card-body";
       fiveDayForecastUvIndex.textContent = 'UV Index here';
       fiveDayForecastCards.appendChild(fiveDayForecastUvIndex);
     }

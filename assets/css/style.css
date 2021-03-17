@@ -20,3 +20,7 @@ header {
 .card-width {
   width: 15rem;
 }
+
+.card-body {
+  margin: 0 auto;
+}
