@@ -17,3 +17,6 @@ header {
   flex: auto;
 } */
 
+.card-width {
+  width: 15rem;
+}

@@ -118,11 +118,11 @@ const displayFiveDayForecast = function(weather) {
 
       let fiveDayForecastCards = document.querySelector("#five-day-forecast-cards");
       fiveDayForecastCards = document.createElement("div");
-      fiveDayForecastCards.classList = "card";
+      fiveDayForecastCards.classList = "card card-width";
       fiveDayForecastCardGroup.appendChild(fiveDayForecastCards);      
       
       let fiveDayForecastDate = document.createElement("h4");
-      fiveDayForecastDate.classList = "card-header";
+      fiveDayForecastDate.classList = "card-header text-center";
       fiveDayForecastDate.textContent = moment.unix(daily.dt).format("MMM D, YYYY");
 
       fiveDayForecastCards.appendChild(fiveDayForecastDate);
