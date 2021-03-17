@@ -4,6 +4,7 @@ const citySearchHistory = [];
 
 let currentWeatherContainerEl = document.querySelector('#current-weather-container');
 let currentWeatherDetailsEl = document.querySelector('#current-weather-details');
+let cityDateIconEl = document.querySelector('#city-search-icon');
 
 let searchInputFormEl = document.querySelector("#citySearchForm");
 let searchColEl = document.querySelector("#search-col");
@@ -41,20 +42,20 @@ const getCityWeather = function() {
 const displayCurrentWeather = function(weather, city) {
 // console.log(city);
   currentWeatherContainerEl.textContent = '';
-  let searchedCityEl = document.createElement("h2");
-  searchedCityEl.textContent = `${city}`;
-  searchedCityEl.setAttribute("vertical-align", "center");
-  currentWeatherContainerEl.append(searchedCityEl);
+  cityDateIconEl = document.createElement("h2");
+  cityDateIconEl.textContent = `${city}`;
+
+  currentWeatherContainerEl.append(cityDateIconEl);
 
 
-  let currentDate = document.createElement("h2")
+  let currentDate = document.createElement("span")
   currentDate.textContent=" (" + moment(weather.dt.value).format("MMM D, YYYY") + ") ";
-  currentWeatherContainerEl.appendChild(currentDate);
+  cityDateIconEl.appendChild(currentDate);
 
   //create an image element
   let weatherIcon = document.createElement("img")
   weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
-  currentWeatherContainerEl.appendChild(weatherIcon);
+  cityDateIconEl.appendChild(weatherIcon);
 
   //create a span element to hold temperature data
   let temperatureEl = document.createElement("span");
