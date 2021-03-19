@@ -178,3 +178,4 @@ const displayFiveDayForecast = function(weather) {
 
     }
   
+}
