@@ -1,27 +1,37 @@
-const citySearchHistory = [];
 
-// let searchInputEl = document.querySelector("#city-search-input");
+
+const citySearchHistory = [];
 
 let currentWeatherContainerEl = document.querySelector('#current-weather-container');
 let currentWeatherDetailsEl = document.querySelector('#current-weather-details');
-let cityDateIconEl = document.querySelector('#city-search-icon');
 
 let searchInputFormEl = document.querySelector("#citySearchForm");
-let searchColEl = document.querySelector("#search-col");
-
-let searchButton = document.querySelector("#search-button");
-
+let searchHistoryEl = document.querySelector("#search-history");
+let searchHistoryButtonsEl = document.querySelector("#past-search-buttons");
 
 let fiveDayForecastHeader = document.querySelector("#five-day-forecast-cards");
 
 const api_key = '437055076a04e82223227a4c0e154c80';
 
+let searchCityWeather = function(event){
+  event.preventDefault();
+  let city = document.getElementById('city-search-input').value.trim();
+
+  if(city){
+      getCityWeather(city);
+      getFiveDayForecast(city);
+      citySearchHistory.unshift({city});
+      console.log(citySearchHistory);
+      searchInputFormEl.value = "";
+  } else{
+      alert("Please enter a City");
+  }
+  saveSearch();
+  searchHistory(city);
+}
 
 //fetch current weather for searched city
-const getCityWeather = function() {
-  event.preventDefault();
-  const city = document.querySelector("#city-search-input").value;
-  
+const getCityWeather = function(city) {
   const queryUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${api_key}`;  
   
   fetch(queryUrl)
@@ -40,14 +50,16 @@ const saveSearch = function() {
 };
 
 const displayCurrentWeather = function(weather, city) {
-// console.log(city);
-  currentWeatherContainerEl.textContent = '';
-  cityDateIconEl = document.createElement("h2");
-  cityDateIconEl.textContent = `${city}`;
 
+  currentWeatherContainerEl.innerHTML = '';
+  currentWeatherDetailsEl.innerHTML = '';
+
+  //create searched city header
+  let cityDateIconEl = document.createElement("h2");
+  cityDateIconEl.textContent = `${city}`;
   currentWeatherContainerEl.append(cityDateIconEl);
 
-
+  //create date element
   let currentDate = document.createElement("span")
   currentDate.textContent=" (" + moment(weather.dt.value).format("MMM D, YYYY") + ") ";
   cityDateIconEl.appendChild(currentDate);
@@ -91,10 +103,6 @@ const getUvIndex = function(latitude, longitude) {
       response.json()
       .then(function(data){
          displayUvIndex(data)
-         console.log(data);
-         console.log(latitude);
-         console.log(longitude);
-         console.log(data.value);
       });
   });
 }
@@ -109,11 +117,11 @@ const displayUvIndex = function(index) {
   uvIndexShading.textContent = index.value;
 
   if (index.value <= 2.9) {
-    uvIndexShading.classList = "low";    
+    uvIndexShading.classList = "favorable";    
   } else if (index.value >= 3 && index.value <= 7.9) {
-    uvIndexShading.classList = "medium";
+    uvIndexShading.classList = "moderate";
   } else if (index.value >= 8) {
-    uvIndexShading.classList = "high";
+    uvIndexShading.classList = "severe";
   }
 
   uvIndexEl.appendChild(uvIndexShading);
@@ -127,7 +135,6 @@ const getFiveDayForecast = function(city){
   .then(function(response){
       response.json()
       .then(function(data){
-        //console.log(data)
       displayFiveDayForecast(data);
       });
   });
@@ -148,7 +155,6 @@ const displayFiveDayForecast = function(weather) {
   let fiveDayForecast = weather.list;
     for (let i=7; i<fiveDayForecast.length; i+=8) {
       let daily = fiveDayForecast[i];
-      //console.log(daily); 
 
       let fiveDayForecastCards = document.querySelector("#five-day-forecast-cards");
       fiveDayForecastCards = document.createElement("div");
@@ -178,3 +184,29 @@ const displayFiveDayForecast = function(weather) {
 
     }
   
+}
+
+const searchHistory = function(historicSearch) {
+
+  searchHistoryButtons = document.createElement("button");
+  searchHistoryButtons.textContent = historicSearch;
+  searchHistoryButtons.classList = 'w-100';
+  searchHistoryButtons.setAttribute('city-searched', historicSearch);
+  searchHistoryButtons.setAttribute('type', 'click');
+  searchHistoryEl.prepend(searchHistoryButtons);
+};
+
+const searchHistoryLookup = function(e) {
+  let citySearched = e.target.getAttribute('city-searched');
+  if (citySearched) {
+    getCityWeather(citySearched);
+    getFiveDayForecast(citySearched);
+  }
+}
+
+const removeEl = (element) => {
+	element.innerHTML = '';
+};
+
+searchInputFormEl.addEventListener('submit', searchCityWeather);
+searchHistoryEl.addEventListener('click', searchHistoryLookup);

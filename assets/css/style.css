@@ -24,3 +24,18 @@ header {
 .card-body {
   margin: 0 auto;
 }
+
+.favorable {
+  background-color: green;
+  padding: 5px;
+}
+
+.moderate {
+  background-color: yellow;
+  padding: 5px;
+}
+
+.severe {
+  background-color: red;
+  padding: 5px;
+}
