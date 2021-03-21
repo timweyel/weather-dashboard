@@ -188,7 +188,7 @@ const displayFiveDayForecast = function(weather) {
       
       let fiveDayForecastDate = document.createElement("h4");
       fiveDayForecastDate.classList = "card-header text-white bg-secondary";
-      fiveDayForecastDate.textContent = moment.unix(daily.dt).format("MMM D, YYYY");
+      fiveDayForecastDate.textContent = moment.unix(daily.dt).format("MMM D, YYYY HH:MM:SS");
       fiveDayForecastCards.appendChild(fiveDayForecastDate);
 
       let fiveDayForecastIcon = document.createElement("img");
