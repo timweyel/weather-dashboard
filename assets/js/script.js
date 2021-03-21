@@ -18,6 +18,8 @@ let fiveDayForecastHeader = document.querySelector("#five-day-forecast-cards");
 
 const api_key = '437055076a04e82223227a4c0e154c80';
 
+
+
 let searchCityWeather = function(event){
   event.preventDefault();
   let city = document.getElementById('city-search-input').value.trim();
@@ -36,9 +38,25 @@ let searchCityWeather = function(event){
   searchHistory(city);
 }
 
+// let checkHttps = function () {
+//   if (location.protocol === 'http:') {
+//     const queryUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${api_key}`;
+//     console.log(queryUrl);
+//   } else {
+//     const queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${api_key}`;
+//     console.log(queryUrl);
+//   }
+//   return queryUrl;
+// }
+
+// checkHttps();
+
+
 //fetch current weather for searched city
 const getCityWeather = function(city) {
-  const queryUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${api_key}`;  
+
+
+ const queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${api_key}`;  
   
   fetch(queryUrl)
   .then(function(response) {
