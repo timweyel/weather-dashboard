@@ -54,7 +54,7 @@ let searchCityWeather = function(event){
 
 //fetch current weather for searched city
 const getCityWeather = function(city) {
-
+  event.preventDefault();
 
  const queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${api_key}`;  
   
@@ -119,7 +119,8 @@ const displayCurrentWeather = function(weather, city) {
 }
 
 const getUvIndex = function(latitude, longitude) {
-  const queryUrl = `http://api.openweathermap.org/data/2.5/uvi?lat=${latitude}&lon=${longitude}&appid=${api_key}`;
+  // event.preventDefault();
+  const queryUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${latitude}&lon=${longitude}&appid=${api_key}`;
 
   fetch(queryUrl)
   .then(function(response){
@@ -152,6 +153,7 @@ const displayUvIndex = function(index) {
 }
 
 const getFiveDayForecast = function(city){  
+  // event.preventDefault();
   const queryUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${api_key}`;
 
   fetch(queryUrl)
