@@ -1,0 +1,61 @@
+
+h2 {
+  margin-left: 20px;
+}
+
+.jumbotron {
+  background-color: #47484c;
+  color: white;
+  margin-bottom: 0;
+}
+
+.search {
+  height: 100vh;
+}
+
+.fas, .fa-search {
+  color: white;
+}
+
+.list-group-item{
+  line-height: 0.5;
+  border: none;
+}
+
+.card {
+  margin: 15px;
+  /* background-color: rgb(255, 126, 126); */
+  /* border: black solid 1px; */
+  justify-content: space-between;
+}
+
+.card-header {
+  background-color: white;
+}
+
+.card-width {
+  width: 15rem;
+}
+
+.card-body {
+  margin: 0 auto;
+}
+
+.favorable {
+  background-color: green;
+  padding: 5px;
+}
+
+.moderate {
+  background-color: yellow;
+  padding: 5px;
+}
+
+.severe {
+  background-color: red;
+  padding: 5px;
+}
+
+#five-day-forecast-container {
+  margin-top: 25px;
+}

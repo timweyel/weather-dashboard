@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+
+  <header class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4 text-center">Weather Dashboard</h1>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      
+      <!-- search section -->
+      <div class="col-3 search" id="search-col">
+        <h4>Search for a City:</h4>
+        <!-- search for city form-->
+        <form id="citySearchForm" class="form-inline">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" id="city-search-input" placeholder="Name of City">
+            <div class="input-group-append">
+              <button id="search-button" class="btn bg-secondary" type="submit"><i class="fas fa-search"></i></button>              
+            </div>
+          </div>
+        </form>
+
+        <!-- search history -->
+        <div id="search-history" >
+         
+        </div>
+      </div>
+
+      <!-- current weather details section -->
+      <div class="col-9">
+        <div class="row">
+          <div id="current-weather-container">
+            <div class="col-12">
+              <h2 id="city-search-input"></h2>
+            </div>
+          </div>
+        </div>
+        <div class="row list-group" id="current-weather-details">
+          <div class="col-12" id="city-date-icon">
+          </div>
+        </div>
+
+        <!-- 5-day forecast section -->
+        <div class="row" id="five-day-forecast-container">
+          <h2 class="col-12" id="five-day-forecast-header"></h2>
+          <div class=".bg-secondary" id="five-day-forecast-cards">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://kit.fontawesome.com/70fcd40144.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+  <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
