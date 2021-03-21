@@ -1,12 +1,17 @@
-
-
 const citySearchHistory = [];
 
 let currentWeatherContainerEl = document.querySelector('#current-weather-container');
 let currentWeatherDetailsEl = document.querySelector('#current-weather-details');
 
 let searchInputFormEl = document.querySelector("#citySearchForm");
+    searchInputFormEl.classList = "w-100";
+let citySearchInputEl = document.querySelector("#city-search-input");
+
+let searchColEl = document.querySelector('#search-col');
+    searchColEl.style.backgroundColor = "#e0e0e0";
+
 let searchHistoryEl = document.querySelector("#search-history");
+    
 let searchHistoryButtonsEl = document.querySelector("#past-search-buttons");
 
 let fiveDayForecastHeader = document.querySelector("#five-day-forecast-cards");
@@ -22,9 +27,10 @@ let searchCityWeather = function(event){
       getFiveDayForecast(city);
       citySearchHistory.unshift({city});
       console.log(citySearchHistory);
-      searchInputFormEl.value = "";
+      citySearchInputEl.value = "";
   } else{
       alert("Please enter a City");
+      return;
   }
   saveSearch();
   searchHistory(city);
@@ -38,7 +44,6 @@ const getCityWeather = function(city) {
   .then(function(response) {
     response.json()
     .then(function(data) {
-      //console.log(data);
       displayCurrentWeather(data, city);
     });
   });
@@ -61,7 +66,7 @@ const displayCurrentWeather = function(weather, city) {
 
   //create date element
   let currentDate = document.createElement("span")
-  currentDate.textContent=" (" + moment(weather.dt.value).format("MMM D, YYYY") + ") ";
+  currentDate.textContent=" (" + moment(weather.dt.value).format("MMM D, YYYY HH:MM:SS") + ") ";
   cityDateIconEl.appendChild(currentDate);
 
   //create an image element
@@ -158,12 +163,12 @@ const displayFiveDayForecast = function(weather) {
 
       let fiveDayForecastCards = document.querySelector("#five-day-forecast-cards");
       fiveDayForecastCards = document.createElement("div");
-      fiveDayForecastCards.classList = "card card-width";
+      fiveDayForecastCards.classList = "card card-width text-center bg-secondary text-white";
       fiveDayForecastCardGroup.appendChild(fiveDayForecastCards);      
       
       let fiveDayForecastDate = document.createElement("h4");
-      fiveDayForecastDate.classList = "card-header";
-      fiveDayForecastDate.textContent = moment.unix(daily.dt).format("MMM D, YYYY HH:MM:SS");
+      fiveDayForecastDate.classList = "card-header text-white bg-secondary";
+      fiveDayForecastDate.textContent = moment.unix(daily.dt).format("MMM D, YYYY");
       fiveDayForecastCards.appendChild(fiveDayForecastDate);
 
       let fiveDayForecastIcon = document.createElement("img");
@@ -190,7 +195,7 @@ const searchHistory = function(historicSearch) {
 
   searchHistoryButtons = document.createElement("button");
   searchHistoryButtons.textContent = historicSearch;
-  searchHistoryButtons.classList = 'w-100';
+  searchHistoryButtons.classList = "w-100 rounded bg-secondary text-white p-2 mt-2";
   searchHistoryButtons.setAttribute('city-searched', historicSearch);
   searchHistoryButtons.setAttribute('type', 'click');
   searchHistoryEl.prepend(searchHistoryButtons);

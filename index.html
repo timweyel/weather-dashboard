@@ -22,17 +22,16 @@
     <div class="row">
       
       <!-- search section -->
-      <div class="col-3 search-col">
+      <div class="col-3 search" id="search-col">
         <h4>Search for a City:</h4>
         <!-- search for city form-->
         <form id="citySearchForm" class="form-inline">
-          <!-- <div class="input-group mb-3"> -->
+          <div class="input-group mb-3">
             <input type="text" class="form-control" id="city-search-input" placeholder="Name of City">
-            <!-- <div class="input-group-append"> -->
-              <button id="search-button" class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
-              <!-- <button id="search-button" class="btn btn-outline-secondary" type="submit" onclick="getCityWeather()"><i class="fas fa-search"></i></button> -->
-            <!-- </div>
-          </div> -->
+            <div class="input-group-append">
+              <button id="search-button" class="btn bg-secondary" type="submit"><i class="fas fa-search"></i></button>              
+            </div>
+          </div>
         </form>
 
         <!-- search history -->
@@ -58,7 +57,7 @@
         <!-- 5-day forecast section -->
         <div class="row" id="five-day-forecast-container">
           <h2 class="col-12" id="five-day-forecast-header"></h2>
-          <div id="five-day-forecast-cards">
+          <div class=".bg-secondary" id="five-day-forecast-cards">
           </div>
         </div>
       </div>
@@ -72,7 +71,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
-<footer>
-  footer
-</footer>
+
 </html>
